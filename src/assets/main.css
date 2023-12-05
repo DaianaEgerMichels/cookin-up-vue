@@ -38,7 +38,7 @@ body {
   font-size: 16px;
   font-weight: 400;
   font-style: normal;
-  background: url('./imagens/fundo-banner.png'), var(--verde-escuro, #263A29);
+  background: url('./images/fundo-banner.png'), var(--verde-escuro, #263A29);
 }
 
 .cabecalho-lg {
