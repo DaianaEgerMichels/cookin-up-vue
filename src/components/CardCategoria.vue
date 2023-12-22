@@ -11,7 +11,7 @@
 
     <ul class="categoria__ingredientes">
       <li v-for="ingrediente in categoria.ingredientes" :key="ingrediente">
-        {{ ingrediente }}
+        <Tag :texto="ingrediente" ativa></Tag>
       </li>
     </ul>
   </article>
@@ -19,11 +19,13 @@
 
 <script lang="ts">
 import type ICategoria from '@/interfaces/ICategoria';
+import Tag from './Tag.vue'
 import { PropType } from 'vue'
 export default {
   props: {
     categoria: {type: Object as PropType<ICategoria>, required: true}
-  }
+  },
+  components: { Tag }
 }
 </script>
 
