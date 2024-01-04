@@ -2,20 +2,32 @@
 import Tag from './Tag.vue'
 export default {
     props: {
-        ingredientes: { type: String, required: true }
+        ingrediente: { type: String, required: true }
     },
     components: { Tag },
     data() {
         return {
             selecionado: false
         }
-    }
+    },
+    methods: {
+        selecionar() {
+            this.selecionado = !this.selecionado
+
+            if (this.selecionado) {
+                this.$emit('adicionarIngrediente', this.ingrediente)
+            } else {
+                this.$emit('removerIngrediente', this.ingrediente)
+            }
+        }
+    },
+    emits: ['adicionarIngrediente', 'removerIngrediente']
 }
 </script>
 
 <template>
-    <button class="ingrediente" @click="selecionado = !selecionado" :aria-pressed="selecionado">
-        <Tag :texto="ingredientes" :ativa="selecionado"/>
+    <button class="ingrediente" @click="selecionar" :aria-pressed="selecionado">
+        <Tag :texto="ingrediente" :ativa="selecionado"/>
     </button>
 </template>
 
