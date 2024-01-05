@@ -23,7 +23,7 @@
         Ops, não encontramos resultados para sua combinação. Vamos tentar de novo?
       </p>
 
-      <img src="../assets/imagens/sem-receitas.png"
+      <img src="../assets/images/sem-receitas.png"
         alt="Desenho de um ovo quebrado. A gema tem um rosto com uma expressão triste.">
     </div>
 
@@ -36,8 +36,13 @@ import { obterReceitas } from '@/http';
 import type IReceita from '@/interfaces/IReceita';
 import BotaoPrincipal from './BotaoPrincipal.vue';
 import CardReceita from './CardReceita.vue';
+import type { PropType } from 'vue';
+import { ingredientesSelecionadosEstaoEmReceita } from '@/operacoes/listas';
 
 export default {
+  props: {
+    ingredientes: { type: Array as PropType<string[]>, required: true }
+  },
   data() {
     return {
       receitasEncontradas: [] as IReceita[]
@@ -46,7 +51,11 @@ export default {
   async created() {
     const receitas = await obterReceitas();
 
-    this.receitasEncontradas = receitas.slice(0, 8);
+    this.receitasEncontradas = receitas.filter((receita) => {
+        // Regra: Os ingredientes da minha lista selecionada devem estar em sua totalidade inclusos na receita
+        const possoFazerAReceita = ingredientesSelecionadosEstaoEmReceita(receita.ingredientes, this.ingredientes);
+        return possoFazerAReceita;
+      });
   },
   components: { BotaoPrincipal, CardReceita },
   emits: ['editarReceitas']
