@@ -8,10 +8,10 @@ This app offers a simplified, interactive experience for culinary enthusiasts to
 
 ## Overview
 
-<img src="../cookin-up/src/assets/images/home-page.png" alt="overview home page"/>
-<img src="../cookin-up/src/assets/images/home-page2.png" alt="overview home page with button"/>
+<img src="./src/assets/images/home-page.png" alt="overview home page"/>
+<img src="./src/assets/images/home-page2.png" alt="overview home page with button"/>
 
-<img src="../cookin-up/src/assets/images/second-page.png" alt="overview second page"/>
+<img src="./src/assets/images/second-page.png" alt="overview second page"/>
 
 ## Project Setup
 
